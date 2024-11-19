@@ -1,0 +1,36 @@
+import getConversationbyId from "@/app/actions/getConversationbyId";
+import getMessages from "@/app/actions/getMessages";
+import EmptyState from "@/components/EmptyState";
+
+
+interface Iparams{
+  conversationId: string;
+}
+
+const conversationId = async( { params }: { params: Iparams }) =>{
+
+  const conversation  = await getConversationbyId(params.conversationId);
+  const messages = await getMessages(params.conversationId);
+
+
+  if(!conversation){
+    return <div className="lg:pl-80 h-full ">
+
+      <div className="h-full flex flex-col">
+        <EmptyState />
+      </div>
+
+    </div>
+  }
+  return (
+    <div className="lg:pl-80 h-full ">
+      <div className="h-full flex flex-col">
+        <Header conversation = {conversation} />
+      </div>
+  
+    </div>
+  )
+}
+
+
+export default conversationId;
