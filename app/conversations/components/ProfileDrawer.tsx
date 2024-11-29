@@ -3,10 +3,12 @@
 import useOtherUsers from "@/app/hooks/useOtherUsers";
 import { Conversation, User } from "@prisma/client";
 import { format } from "date-fns";
-import { Fragment, useMemo } from "react";
+import { Fragment, useMemo, useState } from "react";
 import {Dialog, DialogPanel, Transition, TransitionChild} from "@headlessui/react"
 import { IoClose, IoTrash } from "react-icons/io5";
 import { Avatar } from "@/components/Avatar";
+import Modal from "@/components/Modal";
+import ConfirmModel from "./ConfirmModel";
 
 interface ProfileDrawerProps{
   isOpen : boolean ; 
@@ -24,6 +26,7 @@ const ProfileDrawer = ({
 } : ProfileDrawerProps) => {
 
   const otherUser = useOtherUsers(data);
+  const [isModalOpen , setisModalOpen] = useState(false);
   const joinedDate = useMemo(() => {
     return format(new Date(otherUser.createdAt), 'PP')
   },[otherUser.createdAt])
@@ -39,6 +42,11 @@ const ProfileDrawer = ({
     return 'Active'
   } ,[data])
   return (
+  <>
+    <ConfirmModel
+    isOpen={isModalOpen} 
+    onClose={() => setisModalOpen(false)} />
+   
     <Transition show={isOpen} as={Fragment}>
       <Dialog as="div" className="z-50 relative" onClose={onClose}>
         <TransitionChild as={Fragment} enter="ease-out duration-500"
@@ -54,6 +62,7 @@ const ProfileDrawer = ({
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="pointer-event-none 
+                            right-0
                             fixed 
                             inset-y-0
                             flex max-w-full pl-10">
@@ -104,9 +113,10 @@ const ProfileDrawer = ({
                             {statusText}
                           </div>
                           <div className="flex gap-10 my-8">
-                            <div onClick={() => {}}
-                              className="flex flex-col gap-3
-                              items-center cursor-pointer hover:opacity-75">
+                            <div onClick={() => setisModalOpen(true)}
+                                className="flex flex-col gap-3
+                                        items-center 
+                                        cursor-pointer hover:opacity-75">
                                 <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
                                   <IoTrash size={20} />
                                 </div>
@@ -156,7 +166,8 @@ const ProfileDrawer = ({
         </div>
       </Dialog>
     </Transition>
-  )
+  </>
+  );
 }
 
 export default ProfileDrawer
