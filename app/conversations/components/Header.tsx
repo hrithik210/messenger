@@ -45,7 +45,7 @@ export default function Header({
       ">
         <div className="flex gap-3 items-center">
           
-          <Link href="/conversation"
+          <Link href="/conversations"
           className="lg:hidden text-sky-500 
                   hover:text-sky-600
                     transition cursor-pointer">
