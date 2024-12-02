@@ -6,6 +6,7 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import { Avatar } from "./Avatar";
 import { useRouter } from "next/navigation";
+import LoadingModel from "./LoadingModel";
 
 interface UserBoxProps {
     data: User
@@ -31,6 +32,10 @@ const UserBox:React.FC<UserBoxProps> = ({
   }, [data , router]);
  
   return (
+  <>
+    {isLoading && (
+      <LoadingModel />
+    )}
     <div 
       onClick = {handleClick}
       className="
@@ -68,6 +73,7 @@ const UserBox:React.FC<UserBoxProps> = ({
         </div>
 
     </div>
+  </>
   )
 }
 
