@@ -30,19 +30,7 @@ export const Avatar:React.FC<AvatarProps> = ({
                 
         </div>
 
-        <span className="
-            absolute
-            block
-            rounded-full
-            bg-green-500
-            ring-2
-            ring-white
-            top-0
-            right-0
-            h-2
-            w-2
-            "
-         />
+        
     </div>
   )
 }
