@@ -5,7 +5,7 @@ import useConversation from "../hooks/UseConversation";
 import clsx from "clsx";
 
 
-const page = () => {
+const Page = () => {
   const {isOpen} = useConversation();
   return (
     <div
@@ -18,4 +18,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

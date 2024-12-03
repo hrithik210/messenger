@@ -3,7 +3,7 @@
 import useConversation from "@/app/hooks/UseConversation";
 import Modal from "@/components/Modal";
 import Button from "@/components/ui/Button";
-import { Dialog, DialogTitle } from "@headlessui/react";
+import { DialogTitle } from "@headlessui/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
@@ -76,7 +76,7 @@ const ConfirmModel = ({
                 </DialogTitle>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    You sure ? You can't undo this action afterwards.
+                    You sure ? You cannot undo this action afterwards.
                   </p>
                 </div>
             </div>

@@ -7,7 +7,6 @@ import { Fragment, useMemo, useState } from "react";
 import {Dialog, DialogPanel, Transition, TransitionChild} from "@headlessui/react"
 import { IoClose, IoTrash } from "react-icons/io5";
 import { Avatar } from "@/components/Avatar";
-import Modal from "@/components/Modal";
 import ConfirmModel from "./ConfirmModel";
 import AvatarGroup from "@/components/AvatarGroup";
 
